@@ -12,12 +12,20 @@ const Portafolio = () => {
             <h1>Portafolio</h1>
             <ul>
                 <li>
-                    <NavLink exact to={`${match.url}/proyecto1`}>
+                    <NavLink
+                        activeClassName="on"
+                        exact
+                        to={`${match.url}/proyecto1`}
+                    >
                         Proyecto1
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink exact to={`${match.url}/proyecto2`}>
+                    <NavLink
+                        activeClassName="on"
+                        exact
+                        to={`${match.url}/proyecto2`}
+                    >
                         Proyecto2
                     </NavLink>
                 </li>
@@ -38,12 +46,12 @@ function App() {
             <nav>
                 <ul>
                     <li>
-                        <NavLink exact to="/">
+                        <NavLink activeClassName="on" exact to="/">
                             Inicio
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink exact to="/portafolio">
+                        <NavLink activeClassName="on" exact to="/portafolio">
                             Portafolio
                         </NavLink>
                     </li>
