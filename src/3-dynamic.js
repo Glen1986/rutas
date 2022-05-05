@@ -1,7 +1,9 @@
-import { Switch, Route, NavLink, useRouteMatch } from 'react-router-dom'
+import { Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom'
 
 const Proyecto = () => {
     const match = useRouteMatch()
+    const params = useParams()
+    console.log({ match, params })
     const { proyecto_id } = match.params
     return <h1>proyecto {proyecto_id}</h1>
 }
@@ -12,14 +14,10 @@ const Portafolio = () => {
             <h1>Portafolio</h1>
             <ul>
                 <li>
-                    <NavLink exact to={`${match.url}/proyecto1`}>
-                        Proyecto1
-                    </NavLink>
+                    <Link to={`${match.url}/proyecto1`}>Proyecto1</Link>
                 </li>
                 <li>
-                    <NavLink exact to={`${match.url}/proyecto2`}>
-                        Proyecto2
-                    </NavLink>
+                    <Link to={`${match.url}/proyecto2`}>Proyecto2</Link>
                 </li>
             </ul>
             <div>
@@ -38,14 +36,10 @@ function App() {
             <nav>
                 <ul>
                     <li>
-                        <NavLink exact to="/">
-                            Inicio
-                        </NavLink>
+                        <Link to="/">Inicio</Link>
                     </li>
                     <li>
-                        <NavLink exact to="/portafolio">
-                            Portafolio
-                        </NavLink>
+                        <Link to="/portafolio">Portafolio</Link>
                     </li>
                 </ul>
             </nav>
