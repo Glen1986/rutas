@@ -4,8 +4,12 @@ function useQuery() {
     return new URLSearchParams(useLocation().search)
 }
 function App() {
-    const location = useLocation()
-    console.log({ location })
+    // const location = useLocation()
+    const query = useQuery()
+    const chancho = query.get('chanchito')
+    const nombre = query.get('nombre')
+
+    console.log({ chancho, nombre })
     return (
         <div>
             <nav>
