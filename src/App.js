@@ -47,7 +47,13 @@ function App() {
             <nav>
                 <ul>
                     <li>
-                        <NavLink activeClassName="on" exact to="/">
+                        <NavLink
+                            isActive={(match, location) => {
+                                console.log(match, location)
+                            }}
+                            exact
+                            to="/"
+                        >
                             Inicio
                         </NavLink>
                     </li>
