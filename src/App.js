@@ -1,45 +1,10 @@
-import { Switch, Route, NavLink, useRouteMatch } from 'react-router-dom'
-
-const Proyecto = () => {
-    const match = useRouteMatch()
-    const { proyecto_id } = match.params
-    return <h1>proyecto {proyecto_id}</h1>
-}
+import { Switch, Route, Link, Redirect } from 'react-router-dom'
 const Portafolio = () => {
-    const match = useRouteMatch()
-    return (
-        <div>
-            <h1>Portafolio</h1>
-            <ul>
-                <li>
-                    <NavLink
-                        activeClassName="on"
-                        exact
-                        to={`${match.url}/proyecto1`}
-                    >
-                        Proyecto1
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink
-                        activeStyle={{ fontSize: 24 }}
-                        activeClassName="on"
-                        exact
-                        to={`${match.url}/proyecto2`}
-                    >
-                        Proyecto2
-                    </NavLink>
-                </li>
-            </ul>
-            <div>
-                <Switch>
-                    <Route path={`${match.path}/:proyecto_id`}>
-                        <Proyecto />
-                    </Route>
-                </Switch>
-            </div>
-        </div>
-    )
+    const loggedIn = false
+    if (!loggedIn) {
+        return <Redirect to="/" />
+    }
+    return <h1>Portafolio</h1>
 }
 function App() {
     return (
@@ -47,30 +12,28 @@ function App() {
             <nav>
                 <ul>
                     <li>
-                        <NavLink
-                            isActive={(match, location) => {
-                                console.log(match, location)
-                            }}
-                            exact
-                            to="/"
-                        >
-                            Inicio
-                        </NavLink>
+                        <Link to="/">Inicio</Link>
                     </li>
                     <li>
-                        <NavLink activeClassName="on" exact to="/portafolio">
-                            Portafolio
-                        </NavLink>
+                        <Link to="/perfil">Perfil</Link>
+                    </li>
+                    <li>
+                        <Link to="/portafolio">Portafolio</Link>
                     </li>
                 </ul>
             </nav>
             <section>
                 <Switch>
+                    <Redirect exact from="/" to="/inicio" />
+                    <Route path="/inicio">
+                        <h1>Inicio</h1>
+                    </Route>
+
+                    <Route path="/perfil">
+                        <h1>Perfil</h1>
+                    </Route>
                     <Route path="/portafolio">
                         <Portafolio />
-                    </Route>
-                    <Route path="/">
-                        <h1>Inicio</h1>
                     </Route>
                 </Switch>
             </section>
