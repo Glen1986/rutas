@@ -22,6 +22,7 @@ const Portafolio = () => {
                 </li>
                 <li>
                     <NavLink
+                        activeStyle={{ fontSize: 24 }}
                         activeClassName="on"
                         exact
                         to={`${match.url}/proyecto2`}
