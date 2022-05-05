@@ -1,11 +1,17 @@
-import { Switch, Route, Link, useLocation } from 'react-router-dom'
+import { Switch, Route, Link, useHistory } from 'react-router-dom'
 
-function useQuery() {
-    return new URLSearchParams(useLocation().search)
-}
 function App() {
-    const location = useLocation()
-    console.log({ location })
+    const history = useHistory()
+    console.log(history)
+    const forward = () => {
+        history.goForward()
+    }
+    const back = () => {
+        history.goBack()
+    }
+    const push = (url) => {
+        history.push(url)
+    }
     return (
         <div>
             <nav>
@@ -19,6 +25,10 @@ function App() {
                 </ul>
             </nav>
             <section>
+                <button onClick={back}>Back</button>
+                <button onClick={forward}>forward</button>
+                <button onClick={() => push('chancho')}>push</button>
+
                 <Switch>
                     <Route exact path="/">
                         <h1>Inicio</h1>
